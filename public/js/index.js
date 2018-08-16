@@ -27,3 +27,20 @@ socket.on('newMessage',function(Message){
    socket.on('disconnect',function (){
     console.log('Disconnect from server');
    });
+
+  //  socket.emit('createMessage',{
+  //    from:'frank',
+  //    text:'Hi'
+  //  },function(data){
+  //      console.log('heyyy',data);
+  //  });
+
+   jQuery('#message-form').on('submit',function(e){
+     e.preventDefault();
+      socket.emit('createMessage',{
+       from:'User',
+       text:jQuery('[name=message]').val()
+      },function(){
+
+      });
+   });
