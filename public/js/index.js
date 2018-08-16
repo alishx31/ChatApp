@@ -22,11 +22,15 @@ socket.on('connect',function (){
 
 socket.on('newMessage',function(Message){
     console.log('new message arrived',Message);
+    var li = jQuery('<li></li>');
+    li.text(`${Message.from}: ${Message.text}`);
+
+    jQuery('#messages').append(li);
    });
 
    socket.on('disconnect',function (){
     console.log('Disconnect from server');
-   });
+   }); 
 
   //  socket.emit('createMessage',{
   //    from:'frank',
