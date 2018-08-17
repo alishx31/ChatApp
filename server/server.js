@@ -2,7 +2,7 @@ const express=require('express');
 const path= require('path');
 const http=require('http');
 const socketIO = require('socket.io');
-const {generateMessage}= require('./utils/message')
+const {generateMessage,generateLocationMessage}= require('./utils/message')
 
 var app = express();
 var port= process.env.PORT||3000;
@@ -20,6 +20,11 @@ io.on('connection',(socket)=>{
       io.emit('newMessage',generateMessage(message.from,message.text));
        callback('This is from server');
     });
+
+socket.on('createLocationMessage',(coords)=>{
+    io.emit('newLocationMessage',generateLocationMessage('Admin',coords.latitude,coords.longitude));
+});
+
 
 socket.emit('newMessage',generateMessage('admin', 'welcome to the chat app'));
    
