@@ -55,6 +55,6 @@ socket.broadcast.emit('newMessage',generateMessage('admin','new user joined'));
   });
 });
 
-server.listen('3000',()=>{
-    console.log(`start in port${port}`);
+server.listen('port',()=>{
+    console.log(`start in port`);
 });
