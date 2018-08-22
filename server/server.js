@@ -18,17 +18,17 @@ io.on('connection',(socket)=>{
    socket.on('createMessage',(message,callback)=>{
       console.log('createMessage',message);
       io.emit('newMessage',generateMessage(message.from,message.text));
-       callback('This is from server');
+       callback();
     });
 
 socket.on('createLocationMessage',(coords)=>{
-    io.emit('newLocationMessage',generateLocationMessage('Admin',coords.latitude,coords.longitude));
+    io.emit('newLocationMessage',generateLocationMessage('Admin(#lx)',coords.latitude,coords.longitude));
 });
 
 
-socket.emit('newMessage',generateMessage('admin', 'welcome to the chat app'));
+socket.emit('newMessage',generateMessage('admin(superadmin#Alex)', 'welcome to the chat app'));
    
-socket.broadcast.emit('newMessage',generateMessage('admin','new user joined'));
+socket.broadcast.emit('newMessage',generateMessage('admin(#lx)','new user joined'));
 
 //    socket.emit('newEmail',{
 //     from:'alex@gm.com',

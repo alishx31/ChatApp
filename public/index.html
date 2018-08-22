@@ -2,20 +2,30 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/style.css">
     </head>
-    <body>
-        <p>this is chat app</p>
-        <p>OPEN NEW TAB  FROM ANY WHERE  TO BE A NEW USER</p>
+    <body class="chat">
+            
+        <div class="chat__sidebar">
+            <h3>People</h3>
+            <div id="users"></div>
+        </div>
+       
+        
 
-        <ol id="messages">
-          
-
-        </ol>
+       <div class="chat__main">
+            <ol id="messages" class="chat__messages">
+         </ol>
+       
+       
+        <div class="chat__footer">
         <form id="message-form">
-            <input name="message" type="text" placeholder="Message"/>
+            <input name="message" type="text" placeholder="Message" autofocus autocomplete="off"/>
             <button>send</button>
         </form>
     <button id="send-location">send location</button>
+        </div>
+        </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/libs/index.js"></script>
     <script src="/js/index.js"></script>
